@@ -5,8 +5,9 @@ project(algo VERSION 0.0.1)
 ##### Compile options
 add_compile_options(-g -Wall)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -Wl,--no-undefined")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-undefined")
+# -Wl,--no-undefined: The -Wl option tells the compiler to pass subsequent arguments to the linker.
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 ##### Include paths
 include_directories(.)
