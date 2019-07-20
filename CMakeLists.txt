@@ -30,3 +30,11 @@ target_link_libraries(binary_tree_test  ${TARGET_LIB_NAME})
 # Queue
 add_executable(linked_queue_test tests/queue/linked_queue_test.c)
 target_link_libraries(linked_queue_test  ${TARGET_LIB_NAME})
+
+# String
+add_executable(longest_palindrome src/string/longest_palindrome.c)
+add_executable(z_convert src/string/z_convert.c)
+
+# Backpack problem
+add_executable(backpack_test tests/backpack/backpack_test.c)
+target_link_libraries(backpack_test  ${TARGET_LIB_NAME})
