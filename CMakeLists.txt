@@ -10,6 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-undefined")
 
 ##### Include paths
 include_directories(.)
+include_directories(./inc)
 include_directories(./src)
 
 ##### Source files
@@ -34,6 +35,7 @@ target_link_libraries(linked_queue_test  ${TARGET_LIB_NAME})
 # String
 add_executable(longest_palindrome src/string/longest_palindrome.c)
 add_executable(z_convert src/string/z_convert.c)
+add_executable(min_edit_distance src/string/min_edit_distance.c)
 
 # Backpack problem
 add_executable(backpack_test tests/backpack/backpack_test.c)
