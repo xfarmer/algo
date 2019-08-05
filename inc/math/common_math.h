@@ -8,6 +8,11 @@
 extern "C" {
 #endif
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
+#define ARRAY_SIZEOF(a) (sizeof(a) / sizeof(a[0]))
+
 static inline int max(int a, int b) {
   return a > b ? a : b;
 }

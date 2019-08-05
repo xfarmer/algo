@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "queue/linked_queue.h"
+
 void binary_tree_create(BinaryTree **root) {
   int value = 0;
   printf("\nInput node value(-1 as null): ");
@@ -79,6 +81,32 @@ void binary_tree_postorder(BinaryTree *root) {
   binary_tree_postorder(root->lchild);
   binary_tree_postorder(root->rchild);
   printf("%d ", root->data);
+}
+
+void binary_tree_level(BinaryTree *root) {
+  if (root == NULL) return;
+
+  LinkedQueue *queue = linked_queue_create(NULL);
+  linked_queue_enqueue(queue, (void *) root);
+  void *data;
+  BinaryTree *child;
+  while (!linked_queue_is_empty(queue)) {
+    if (linked_queue_dequeue(queue, &data)) {
+      if (data != NULL) {
+        child = (BinaryTree *) data;
+        printf("%d ", child->data);
+
+        if (child->lchild != NULL) {
+          linked_queue_enqueue(queue, (void *) child->lchild);
+        }
+        if (child->rchild != NULL) {
+          linked_queue_enqueue(queue, (void *) child->rchild);
+        }
+      }
+    }
+  }
+
+  linked_queue_destroy(queue);
 }
 
 void binary_tree_leaf(BinaryTree *root) {

@@ -24,6 +24,9 @@ int main(void) {
   printf("\n\nPostorder traversal of the tree is: \n");
   binary_tree_postorder(tree);
 
+  printf("\n\nLevel traversal of the tree is: \n");
+  binary_tree_level(tree);
+
   int leaf_num = binary_tree_leaf_num(tree);
   printf("\n\nLeaf num of the tree is: %d", leaf_num);
 

@@ -32,6 +32,8 @@ void binary_tree_inorder(BinaryTree *root);
 
 void binary_tree_postorder(BinaryTree *root);
 
+void binary_tree_level(BinaryTree *root);
+
 void binary_tree_leaf(BinaryTree *root);
 
 int binary_tree_leaf_num(BinaryTree *root);

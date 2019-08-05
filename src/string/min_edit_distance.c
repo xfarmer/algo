@@ -15,11 +15,11 @@ int min_edit_distance(char *str_a, char *str_b) {
   int dp[m + 1][n + 1];
   memset(dp, 0, (m + 1) * (n + 1) * sizeof(int));
 
-  for (int i = 0; i < m; ++i) {
+  for (int i = 0; i <= m; ++i) {
     dp[i][0] = i;
   }
 
-  for (int j = 0; j < n; ++j) {
+  for (int j = 0; j <= n; ++j) {
     dp[0][j] = j;
   }
 
