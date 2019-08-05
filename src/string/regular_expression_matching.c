@@ -4,7 +4,20 @@
 #include <stdio.h>
 #include <string.h>
 
-bool is_match(const char *text, const char *pattern) {
+bool is_match_recursively(const char *text, const char *pattern) {
+  int m = (int) strlen(text);
+  int n = (int) strlen(pattern);
+  if (n == 0) return m == 0;
+
+  bool match = m > 0 && (*text == *pattern || *pattern == '.');
+  if (n > 1 && *(pattern + 1) == '*') {
+    return is_match_recursively(text, pattern + 2) || (match && is_match_recursively(text + 1, pattern));
+  } else {
+    return match && is_match_recursively(text + 1, pattern + 1);
+  }
+}
+
+bool is_match_dp(const char *text, const char *pattern) {
   int t = (int) strlen(text);
   int p = (int) strlen(pattern);
   int dp[t + 1][p + 1];
@@ -15,20 +28,14 @@ bool is_match(const char *text, const char *pattern) {
 
   for (int i = t; i >= 0; --i) {
     for (int j = p - 1; j >= 0; --j) {
-      bool match = *(text + i) == *(pattern + j) || (i < t && *(pattern + j) == '.');
+      // When i == t, match is always False, because (text + i) is an empty string.
+      // So we don't need to worry about the (i + 1) will be out of bounds.
+      bool match = i < t && (*(text + i) == *(pattern + j) || *(pattern + j) == '.');
 
       if ((j + 1) < p && *(pattern + j + 1) == '*') {
-        if (i < t) {
-          dp[i][j] = dp[i][j + 2] || (match && dp[i + 1][j]);
-        } else {
-          dp[i][j] = dp[i][j + 2] || match;
-        }
+        dp[i][j] = dp[i][j + 2] || (match && dp[i + 1][j]);
       } else {
-        if (i < t) {
-          dp[i][j] = (match && dp[i + 1][j + 1]);
-        } else {
-          dp[i][j] = match;
-        }
+        dp[i][j] = (match && dp[i + 1][j + 1]);
       }
     }
   }
@@ -47,6 +54,6 @@ int main(void) {
   printf("Testing simple regular expression matching:\n");
   char *text = "ab";
   char *pattern = ".*c";
-  bool match = is_match(text, pattern);
+  bool match = is_match_dp(text, pattern);
   printf("Pattern \"%s\" match the string: \"%s\" ?  %s\n", pattern, text, match ? "True" : "False");
 }

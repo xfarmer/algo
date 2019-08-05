@@ -1,5 +1,4 @@
-// Copyright 2019 Mobvoi Inc. All Rights Reserved.
-// Author: Farmer Li (jxli@mobvoi.com)
+// Author: Farmer Li (jxli.farmer@gmail.com)
 
 #ifndef ALGO_MATH_COMMON_MATH_H_
 #define ALGO_MATH_COMMON_MATH_H_
