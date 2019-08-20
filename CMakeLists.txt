@@ -30,6 +30,7 @@ add_executable(binary_tree_test tests/tree/binary_tree_test.c)
 target_link_libraries(binary_tree_test  ${TARGET_LIB_NAME})
 
 # Dynamic programing
+add_executable(largest_rect_area_from_hist src/dp/largest_rect_area_from_hist.c)
 add_executable(max_disjoint_lines src/dp/max_disjoint_lines.c)
 
 # Queue
@@ -41,6 +42,7 @@ add_executable(longest_palindrome src/string/longest_palindrome.c)
 add_executable(min_edit_distance src/string/min_edit_distance.c)
 add_executable(my_atoi src/string/my_atoi.c)
 add_executable(regular_expression_matching src/string/regular_expression_matching.c)
+add_executable(wildcard_matching src/string/wildcard_matching.c)
 add_executable(z_convert src/string/z_convert.c)
 
 # Backpack problem
